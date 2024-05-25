@@ -55,7 +55,7 @@ drawField(a)
 checkList = [1,2,3,4,5,6,7,8,9]
 
 def lineCheck(figure):
-    if figure == "��������":
+    if figure == "crosses":
         if listInListCheck([1,2,3], crosses) or listInListCheck([4,5,6], crosses) or listInListCheck([7,8,9], crosses) \
         or listInListCheck([1,4,7], crosses) or listInListCheck([2,5,8], crosses) or listInListCheck([3,6,9], crosses)\
         or listInListCheck([1,5,9], crosses) or listInListCheck([3,5,7], crosses):
@@ -76,38 +76,38 @@ def listInListCheck(list1,list2):
 turns = 0
 isLine = False
 while turns < 9 and not isLine:
-    recNum = int(input("���� ������ �������?"))
+    recNum = int(input("Where do we put the cross? (squares from 1 to 9 from left to right)?"))
     isCorrect = False
     while not isCorrect:
         if recNum in checkList and recNum <= 9:
             isCorrect = True;
         elif recNum > 9 or recNum < 1:
-            recNum = int(input("���, ������ �������� ���, ������� ������:"))
+            recNum = int(input("There is no such square, enter another:"))
         elif recNum not in checkList:
-            recNum = int(input("� ������ �������� ��� ���-�� ����, ������� ������:"))
+            recNum = int(input("There is already something in this square, enter another:"))
     drawCross(30,recNum)
-    isLine = lineCheck("��������")
+    isLine = lineCheck("crosses")
     if isLine:
-        input("�������� ��������!")
+        input("The crosses have won!")
         break
     turns += 1;
     if turns == 9:
         continue
     
-    recNum = int(input("���� ������ �����?"))
+    recNum = int(input("Where do we put the zero? (squares from 1 to 9 from left to right)?"))
     isCorrect = False
     while not isCorrect:
         if recNum in checkList and recNum <= 9:
             isCorrect = True
         elif recNum > 9 or recNum < 1:
-            recNum = int(input("���, ������ �������� ���, ������� ������:"))
+            recNum = int(input("There is no such square, enter another:"))
         elif recNum not in checkList:
-            recNum = int(input("� ������ �������� ��� ���-�� ����, ������� ������:"))
+            recNum = int(input("There is already something in this square, enter another:"))
     drawCircle(15,recNum)
-    isLine = lineCheck("������")
+    isLine = lineCheck("zeroes")
     if isLine:
-        input("������ ��������!")
+        input("The zeroes have won!")
         break
     turns += 1;
 if turns == 9:
-    print("�����!")
+    print("Draw!")
