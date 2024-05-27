@@ -37,4 +37,5 @@ def lineCheck(figure) - проверяет не заполнена ли кака
 
 Блок-схемы:
 "main"
+![image](https://github.com/kcornesss/praktik/assets/116918339/774e6f93-6b3e-4221-9015-fc01234567ae)
 
