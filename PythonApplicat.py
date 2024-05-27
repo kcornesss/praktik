@@ -1,6 +1,6 @@
 from turtle import *
 
-#создание поля
+#sozdanie pola
 def drawField(a):
     t = Turtle()
     t.speed(0)
@@ -19,7 +19,7 @@ def drawField(a):
             xCenters.append(t.position()[0] - a/2)
             yCenters.append(t.position()[1] + a/2)   
 
-#создание крестика
+#sozdanie krestika
 def drawCross(a, recNum):
     t = Turtle()
     t.speed(0)
@@ -36,7 +36,7 @@ def drawCross(a, recNum):
         t.left(90)
     checkList.remove(recNum)
 
-#создание нолика    
+#sozdanie nolika   
 def drawCircle(a, recNum):
     t = Turtle()
     t.speed(0)
@@ -49,19 +49,19 @@ def drawCircle(a, recNum):
     t.circle(r)
     checkList.remove(recNum)
 
-#создание переменных
+#sozdanie peremennih
 xCenters = []
 yCenters = []
 crosses = []
 circles = []
 checkList = [1,2,3,4,5,6,7,8,9]
-#ширина квадрата и радиус нолика
+#shirina kvadrata i radius nolika
 a = 50
 r = 20
-#рисуем поле
+#risyem pole
 drawField(a)
 
-#проверка выигрошных комбинаций
+#proverka viigrashnih kombinacii
 def lineCheck(figure):
     if figure == "crosses":
         if listInListCheck([1,2,3], crosses) or listInListCheck([4,5,6], crosses) or listInListCheck([7,8,9], crosses) \
@@ -75,22 +75,22 @@ def lineCheck(figure):
             return True
     return False
 
-#проверка какая фигура какому квадрату соответствует 
+#proverka kakaya figyra kakomy kvadraty sootvetstvyet
 def listInListCheck(list1,list2):
     for element in list1:
         if element not in list2:
             return False
     return True
 
-#создание переменных для выхода из цикла
+#sozdanie peremennih dla vihoda iz cikla
 turns = 0
 isLine = False
 
 while turns < 9 and not isLine:
-    #ход крестиков
+    #hod krestikov
     recNum = int(input("Where do we put the cross? (squares from 1 to 9 from left to right)?"))
     isCorrect = False
-    #проверка верности введённых данных
+    #proverka vernosti vvedonnih dannih
     while not isCorrect:
         if recNum in checkList and recNum <= 9:
             isCorrect = True;
@@ -98,7 +98,7 @@ while turns < 9 and not isLine:
             recNum = int(input("There is no such square, enter another:"))
         elif recNum not in checkList:
             recNum = int(input("There is already something in this square, enter another:"))
-    #рисуем крестик и проверяем на выигрыш
+    #risyem krestik i proveraem na viigrish
     drawCross(30,recNum)
     isLine = lineCheck("crosses")
     if isLine:
@@ -106,10 +106,10 @@ while turns < 9 and not isLine:
         break
     turns += 1;
     
-    #ход ноликов
+    #hod nolikov
     recNum = int(input("Where do we put the zero? (squares from 1 to 9 from left to right)?"))
     isCorrect = False
-    #проверка верности введённых данных
+    #proverka vernosti vvedonnih dannih
     while not isCorrect:
         if recNum in checkList and recNum <= 9:
             isCorrect = True
@@ -117,13 +117,13 @@ while turns < 9 and not isLine:
             recNum = int(input("There is no such square, enter another:"))
         elif recNum not in checkList:
             recNum = int(input("There is already something in this square, enter another:"))
-     #рисуем нолик и проверяем на выигрыш
+     #risyem nolik i proveraem na viigrish
     drawCircle(15,recNum)
     isLine = lineCheck("zeroes")
     if isLine:
         input("The zeroes have won!")
         break
     turns += 1;
-#случай ничьей
+#slychai nichei
 if turns == 9:
     print("Draw!")
